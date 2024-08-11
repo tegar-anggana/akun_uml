@@ -10,7 +10,7 @@ Table users {
 
 Table companies {
   id varchar [primary key]
-  logo varchar [ref: > users.id]
+  logo varchar
   nama varchar
   industri varchar
   alamat varchar
@@ -28,7 +28,7 @@ Table chart_of_accounts {
   kode_akun varchar
   nama_akun varchar
   tipe_akun varchar
-  saldo double
+  saldo numeric
   debit_kredit varchar
 }
 
