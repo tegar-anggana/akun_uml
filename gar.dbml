@@ -1,0 +1,88 @@
+Table users {
+  id varchar [primary key]
+  full_name varchar
+  username varchar
+  email varchar
+  password varchar
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table companies {
+  id varchar [primary key]
+  logo varchar [ref: > users.id]
+  nama varchar
+  industri varchar
+  alamat varchar
+  provinsi varchar
+  kecamatan varchar
+  kota_kabupaten varchar
+  penanggung_jawab varchar
+  posisi varchar
+  bank varchar
+  no_rekening varchar
+}
+
+Table chart_of_accounts {
+  id varchar [primary key]
+  kode_akun varchar
+  nama_akun varchar
+  tipe_akun varchar
+  saldo double
+  debit_kredit varchar
+}
+
+Table customers {
+  id varchar [primary key]
+  nama varchar
+  alamat varchar
+  email varchar
+  no_telp varchar
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table suppliers {
+  id varchar [primary key]
+  nama varchar
+  alamat varchar
+  email varchar
+  no_telp varchar
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table products {
+  id varchar [primary key]
+  nama varchar
+  jenis varchar
+  harga_beli bigint
+  harga_jual bigint
+  margin bigint
+  stok int
+  deskripsi text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table pembelian {
+  id varchar [primary key]
+  product_id varchar [ref: > products.id]
+  supplier_id varchar [ref: > suppliers.id]
+  tanggal_pembelian timestamp
+  jumlah int
+  total_harga bigint
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table penjualan {
+  id varchar [primary key]
+  customer_id varchar [ref: > customers.id]
+  product_id varchar [ref: > products.id]
+  tanggal_penjualan timestamp
+  jumlah int
+  total_harga bigint
+  created_at timestamp
+  updated_at timestamp
+}
