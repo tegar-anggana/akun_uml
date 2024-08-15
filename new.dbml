@@ -70,11 +70,11 @@ Table product_summary {
   metode varchar // fifo atau avg
   tgl timestamp
   kode_barang varchar [ref: > products.kode]
-  harga_per_unit bigint
-  stok_awal bigint
-  jumlah_awal bigint // harga
-  stok_akhir bigint
-  jumlah_akhir bigint // harga
+  harga_per_unit numeric
+  stok_awal numeric
+  jumlah_awal numeric // harga
+  stok_akhir numeric
+  jumlah_akhir numeric // harga
 }
 
 Table penomoran {
@@ -88,7 +88,7 @@ Table purchase_order {
   remarks varchar
   order_id varchar
   status varchar
-  jumlah bigint
+  jumlah numeric
 }
 
 Table work_order {
@@ -98,7 +98,7 @@ Table work_order {
   remarks varchar
   order_id varchar
   status varchar
-  jumlah bigint
+  jumlah numeric
 }
 
 Table sales_order {
@@ -108,27 +108,37 @@ Table sales_order {
   remarks varchar
   order_id varchar
   status varchar
-  jumlah bigint
+  jumlah numeric
 }
 
-Table pembelian {
-  id varchar [primary key]
-  product_id varchar [ref: > products.id]
-  supplier_id varchar [ref: > suppliers.id]
-  tanggal_pembelian timestamp
-  jumlah int
-  total_harga bigint
-  created_at timestamp
-  updated_at timestamp
-}
-
-Table penjualan {
+Table invoice {
   id varchar [primary key]
   customer_id varchar [ref: > customers.id]
-  product_id varchar [ref: > products.id]
-  tanggal_penjualan timestamp
-  jumlah int
-  total_harga bigint
-  created_at timestamp
-  updated_at timestamp
+  no_invoice varchar
+  jatuh_tempo timestamp
+  status varchar
+  sisa_tagihan numeric
+  total numeric
 }
+
+// Table pembelian {
+//   id varchar [primary key]
+//   product_id varchar [ref: > products.id]
+//   supplier_id varchar [ref: > suppliers.id]
+//   tanggal_pembelian timestamp
+//   jumlah int
+//   total_harga numeric
+//   created_at timestamp
+//   updated_at timestamp
+// }
+
+// Table penjualan {
+//   id varchar [primary key]
+//   customer_id varchar [ref: > customers.id]
+//   product_id varchar [ref: > products.id]
+//   tanggal_penjualan timestamp
+//   jumlah int
+//   total_harga numeric
+//   created_at timestamp
+//   updated_at timestamp
+// }
